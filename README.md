@@ -20,7 +20,7 @@ IAM Zero Trust Auditor est un outil en Python qui :
 * Génère des rapports exploitables en Markdown, JSON, SARIF (intégrables en CI/CD, GitHub Code Scanning).
 * S’utilise en CLI (iam-auditor scan --cloud aws) pour scanner un fichier ou un dossier de policies.
 
-## 🔎 Règles de détection IAM (R01 → R08)
+## Règles de détection IAM (R01 → R08)
 
 IAM Zero Trust Auditor implémente 8 règles de sécurité permettant d’identifier les mauvaises pratiques IAM et de renforcer le principe du Least Privilege.
 
