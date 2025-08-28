@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+"""
+Zero Trust Cloud IAM Auditor CLI
+"""
+
+import sys
+from pathlib import Path
+
+# Add project root to path
+ROOT = Path(__file__).resolve().parent
+SRC = ROOT / "src"
+IOLAYER = ROOT / "iolayer"
+if str(SRC) not in sys.path:
+    sys.path.insert(0, str(SRC))
+if str(IOLAYER) not in sys.path:
+    sys.path.insert(0, str(IOLAYER))
+
+from main import cli
+
+def main():
+    cli()
+
+if __name__ == "__main__":
+    main()

@@ -37,8 +37,7 @@ dev = [
     "mypy>=1.0.0",
 ]
 
-[project.scripts]
-iam-auditor = "main:main"
+
 
 [tool.black]
 line-length = 88
