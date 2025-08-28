@@ -80,7 +80,6 @@ IAM Zero Trust Auditor implémente 8 règles de sécurité permettant d’identi
    python -m venv .venv
    source .venv/bin/activate   # (Windows: .venv\Scripts\activate)
    pip install --upgrade pip
-````
 
 2. Installer en mode “editable” :
 
