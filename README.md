@@ -64,3 +64,78 @@ IAM Zero Trust Auditor implémente 8 règles de sécurité permettant d’identi
 * **Risque** : risque de détournement inter-service (cross-service abuse).
 * **Remédiation** : ajouter une condition `StringEquals` sur `iam:PassedToService`, `SourceArn` ou `SourceAccount`.
 
+## Installation
+
+### Prérequis
+* Python **3.10+**
+* macOS / Linux / WSL (Windows via WSL)
+* `git`, `pip`, `venv`
+
+### Étapes
+1. Cloner le dépôt et créer un environnement virtuel :
+   ```bash
+   git clone <your-repo-url> iam-zero-trust-auditor
+   cd iam-zero-trust-auditor
+
+   python -m venv .venv
+   source .venv/bin/activate   # (Windows: .venv\Scripts\activate)
+   pip install --upgrade pip
+````
+
+2. Installer en mode “editable” :
+
+   ```bash
+   pip install -e .
+   ```
+
+---
+
+## Usage
+
+Scanner un **dossier** de policies AWS et générer les rapports dans `reports/` :
+
+```bash
+python -m src.main scan --cloud aws --in examples/aws_policies --out reports
+```
+
+* Sorties générées :
+
+  * `reports/scan.json` → rapport machine (JSON)
+  * `reports/scan.md` → rapport lisible humain (Markdown)
+  * `reports/scan.sarif.json` → rapport SARIF (CI/CD, GitHub Code Scanning)
+
+Scanner un **fichier unique** :
+
+```bash
+python -m src.main scan --cloud aws --in examples/aws_policies/bad_policy.json --out reports
+```
+
+---
+
+## Tests
+
+Vérifier que tout fonctionne avec PyTest :
+
+```bash
+pytest -q
+```
+
+---
+
+## Exemple rapide
+
+Exécuter le scan sur les policies d’exemple :
+
+```bash
+python -m src.main scan --cloud aws --in examples/aws_policies --out reports
+```
+
+Sortie console :
+
+```
+[OK] Rapport généré dans reports
+  - Findings : 5
+  - Score    : 70/100
+```
+
+Puis ouvrir `reports/scan.md` pour consulter les détails.
